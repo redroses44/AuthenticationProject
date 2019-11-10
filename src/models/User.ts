@@ -7,6 +7,7 @@ const UserSchema: Schema = new Schema({
     type: String,
     required: [true, 'Name is required']
   },
+  facebookId: String,
   email: {
     type: String,
     unique: true,
@@ -23,7 +24,7 @@ const UserSchema: Schema = new Schema({
   },
   password: {
     type: String,
-    required: [true, 'Password is required'],
+    //required: [true, 'Password is required'],
     minlength: 6,
     select: false
   },

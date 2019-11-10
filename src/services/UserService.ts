@@ -63,22 +63,3 @@ export const getUser = asyncHandler(
     });
   }
 );
-
-export const createUser = asyncHandler(
-  async (req: Request, res: Response, next: NextFunction) => {
-    let user = await User.findOne({ email: req.body.email });
-    if (user) {
-      return next(
-        new HttpException(404, 'User with that email already exists.')
-      );
-    }
-
-    user = await User.create(req.body);
-    user.save();
-
-    res.status(200).json({
-      success: true,
-      data: user
-    });
-  }
-);
